@@ -69,7 +69,7 @@ def make_model(input_shape, num_classes):
         x = layers.BatchNormalization()(x)
 
         x = layers.MaxPooling2D(3, strides=2, padding="same")(x)
-
+        
         # Project residual
         residual = layers.Conv2D(size, 1, strides=2, padding="same")(
             previous_block_activation
