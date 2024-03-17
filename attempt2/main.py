@@ -7,16 +7,17 @@ import os
 import base64
 import io
 
-app = Flask("imagerecog", static_folder="/Users/gustavtamkivi/Documents/Code/UT-AI-project/attempt2/static")
+app = Flask("imagerecog", static_folder=os.path.abspath('attempt2/static'))
 
 # Load the Keras model
-model = keras.models.load_model("/Users/gustavtamkivi/Documents/Code/UT-AI-project/attempt2/keras_model.h5")
+model = keras.models.load_model('attempt2/keras_model.h5')
 
 # Compile the model
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Load the labels
-class_names = open("/Users/gustavtamkivi/Documents/Code/UT-AI-project/attempt2/labels.txt", "r").readlines()
+print() 
+class_names = open('attempt2/labels.txt', "r").readlines()
 
 # Define the text for each class
 class_text = {
