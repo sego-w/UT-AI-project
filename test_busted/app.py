@@ -69,7 +69,7 @@ def make_model(input_shape, num_classes):
         x = layers.BatchNormalization()(x)
 
         x = layers.MaxPooling2D(3, strides=2, padding="same")(x)
-        
+
         # Project residual
         residual = layers.Conv2D(size, 1, strides=2, padding="same")(
             previous_block_activation
@@ -117,7 +117,7 @@ model.fit(
 
 
 img = keras.utils.load_img(
-    "PetImages/Cat/6779.jpg", target_size=image_size
+    "/Users/gustavtamkivi/Documents/Code/UT-AI-project/test/test1/9.jpg", target_size=image_size
 )
 plt.imshow(img)
 

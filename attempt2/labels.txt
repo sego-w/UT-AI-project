@@ -1,0 +1,6 @@
+0 klaaspakend
+1 taara
+2 paberpakend
+3 biojaatmed
+4 vanapaber
+5 plastpakend
