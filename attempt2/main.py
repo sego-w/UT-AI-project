@@ -50,8 +50,6 @@ def home():
                 margin: 0;
                 padding: 0;
                 background-color: #f5f5f5;
-                border-left: 5px solid #add8e6;
-                border-right: 5px solid #add8e6;
             }
             .container {
                 max-width: 800px;
