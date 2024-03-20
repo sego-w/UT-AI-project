@@ -45,6 +45,45 @@ def home():
         <title>Image Manipulator</title>
         <link rel="stylesheet" href="/static/style.css">
         <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+                border-left: 5px solid #add8e6;
+                border-right: 5px solid #add8e6;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+            }
+            h1 {
+                color: #333;
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+            p {
+                color: #666;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            form {
+                margin-bottom: 20px;
+            }
+            input[type="file"] {
+                margin-bottom: 10px;
+            }
+            input[type="submit"] {
+                padding: 10px 20px;
+                background-color: #add8e6;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
             #result {
                 font-size: 18px;
                 line-height: 1.6;
@@ -80,6 +119,8 @@ def home():
                 });
             });
         </script>
+        
+        <p>Kui sinu lähedal ei ole prügikonteinerit, saad leida lähima veebilehelt</p><a href=https://kuhuviia.ee>kuhuviia.ee</a>
     </body>
     </html>
     '''
