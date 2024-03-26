@@ -9,17 +9,16 @@ import io
 
 app = Flask("imagerecog", static_folder=os.path.abspath('attempt2/static'))
 
-# Load the Keras model
+# Lae kerase mudel valmis
 model = keras.models.load_model('attempt2/keras_model.h5')
 
-# Compile the model
+# Kompileeri mudel
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-# Load the labels
-print() 
+# Lae mudeli eristatavad kategooriad
 class_names = open('attempt2/labels.txt', "r").readlines()
 
-# Define the text for each class
+# Defineeri iga leitud klassile vastav sõnum kasutajale
 class_text = {
     'klaaspakend': 'Loputa vajadusel kergelt, et ei määriks teisi pakendeid ja kotti. Eemadada korgid ja kaaned, sildid võivad jääda.',
     'taara': 'Viige pakend lähimasse taaraautomaati. Juhul, kui masin ei võta seda vastu, visake kohapealsesse prügikasti ära',
@@ -28,7 +27,7 @@ class_text = {
     'vanapaber': 'Kogu paber ja kartong muudest jäätmetest eraldi ka siis, kui teie majal pole selleks konteinerit. Vanapaber pane konteinerisse lahtiselt.',
     'plastpakend': 'Kogu pakendi- ja toidujäätmed eraldi ja segaolmejäätmete hulk väheneb märgatavalt!',
 }
-
+# Koduleht
 @app.route('/')
 def home():
     css_file = os.path.join('static', 'style.css')
@@ -131,7 +130,7 @@ def upload():
     file = request.files['image']
     image = Image.open(file.stream).convert("RGB")
     
-    # Preprocess the image
+    # Töötle saadud pilt vajalikult mudelile loetavaks
     size = (224, 224)
     image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
     image_array = np.asarray(image)
@@ -139,21 +138,21 @@ def upload():
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     data[0] = normalized_image_array
     
-    # Make predictions using the Keras model
+    # Vii läbi mudeli tehtud tuvastus/ennustus
     prediction = model.predict(data)
     index = np.argmax(prediction)
     class_name = class_names[index].strip()
     confidence_score = float(prediction[0][index])
     
-    # Get the text for the predicted class
+    # Anna leitud klassile vastav sõnum
     predicted_text = class_text.get(class_name.split(' ')[1], 'Unknown class')
     
-    # Convert the uploaded image to base64
+    # Kodeeri üleslaetud pilt base64 formaati
     buffered = io.BytesIO()
     image.save(buffered, format="JPEG")
     image_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
     
-    # Return the prediction result as JSON
+    # Tagasta tuvastuse tulemus JSON formaadis
     result = {
         'class_name': class_name,
         'confidence_score': confidence_score,
