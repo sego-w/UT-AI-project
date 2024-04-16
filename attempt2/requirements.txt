@@ -3,6 +3,3 @@ pillow
 numpy
 tensorflow
 keras
-os
-base64
-io
