@@ -1,0 +1,1 @@
+FLASK_APP=/Users/gustavtamkivi/Documents/Code/UT-AI-project/attempt2/main.py
