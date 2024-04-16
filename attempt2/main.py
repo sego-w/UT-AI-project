@@ -18,12 +18,6 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 # Lae mudeli eristatavad kategooriad
 class_names = open('attempt2/labels.txt', "r").readlines()
 
-
-model_path = 'attempt2/keras_model.h5'
-print(f"Loading model from: {os.path.abspath(model_path)}")
-
-
-
 # Defineeri iga leitud klassile vastav sõnum kasutajale
 class_text = {
     'klaaspakend': 'Loputa vajadusel kergelt, et ei määriks teisi pakendeid ja kotti. Eemadada korgid ja kaaned, sildid võivad jääda.',
@@ -168,4 +162,4 @@ def upload():
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=5000)
+    app.run(host='0.0.0.0',port=5000)
