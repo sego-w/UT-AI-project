@@ -1,5 +1,4 @@
 Flask
 pillow
 numpy
-tensorflow
 keras
