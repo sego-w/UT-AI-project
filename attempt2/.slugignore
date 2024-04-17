@@ -1,3 +1,10 @@
 #testing
-/keras_model
-/labels
+namex
+libclang
+flatbuffers
+wrapt
+typing-extensions
+tensorboard-data-server
+six
+pygments
+protobuf
